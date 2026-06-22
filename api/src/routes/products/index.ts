@@ -1,21 +1,19 @@
 import { Router } from "express";
+import { createProduct, deleteProduct, getProductsById, listProducts, updateProduct } from "./productsCrontoller";
 
 
 // products endpoints
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.send('The list of products')
-});
+router.get('/', listProducts);
 
-router.get('/:id', (req, res) => {
-    console.log(req.params);
-    res.send(`Product:`);
-})
+router.get('/:id', getProductsById);
 
-router.post('/', (req, res) => {
-    res.send('New products created')
-});
+router.post('/', createProduct);
+
+router.delete('/', deleteProduct);
+
+router.put('/', updateProduct);
 
 export default router;
